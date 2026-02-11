@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Dispensasi SMAN 1 Magetan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .sidebar-item.active {
+            background-color: #3b82f6;
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div class="min-h-screen flex flex-col md:flex-row">
+        <!-- Mobile Header -->
+        <div class="md:hidden bg-white p-4 border-b flex justify-between items-center sticky top-0 z-50 shadow-sm">
+            <h1 class="text-blue-600 font-bold tracking-tight text-sm">DISPENSASI SMASA</h1>
+            <div class="flex space-x-1">
+                <button onclick="switchTab('home')" class="mobile-nav-btn p-2 rounded-lg" data-tab="home"><i data-lucide="home" class="w-5 h-5"></i></button>
+                <button onclick="switchTab('form')" class="mobile-nav-btn p-2 rounded-lg" data-tab="form"><i data-lucide="file-text" class="w-5 h-5"></i></button>
+                <button onclick="switchTab('presence')" class="mobile-nav-btn p-2 rounded-lg" data-tab="presence"><i data-lucide="clipboard-check" class="w-5 h-5"></i></button>
+            </div>
+        </div>
+
+        <!-- Sidebar Desktop -->
+        <nav class="hidden md:flex flex-col w-72 bg-white border-r p-6 space-y-2 sticky h-screen top-0">
+            <div class="pb-8 pt-4">
+                <div class="w-20 h-20 mb-4">
+                    <img src="https://smasa-magetan.sch.id/wp-content/uploads/2023/06/LOGO-SMA-NEGERI-1-MAGETAN-258x300.png" alt="Logo" class="w-full h-full object-contain">
+                </div>
+                <h2 class="text-xl font-bold text-slate-800 leading-tight">SMAN 1 Magetan</h2>
+                <p class="text-sm text-slate-500">Portal Dispensasi Siswa</p>
+            </div>
+            
+            <button onclick="switchTab('home')" class="sidebar-item active flex items-center space-x-3 w-full p-4 rounded-xl transition-all duration-300" data-tab="home">
+                <i data-lucide="home" class="w-5 h-5"></i>
+                <span class="font-medium">Beranda Utama</span>
+            </button>
+            <button onclick="switchTab('form')" class="sidebar-item flex items-center space-x-3 w-full p-4 rounded-xl text-blue-400 hover:bg-blue-50 transition-all duration-300" data-tab="form">
+                <i data-lucide="file-text" class="w-5 h-5"></i>
+                <span class="font-medium">Ajukan Dispensasi</span>
+            </button>
+            <button onclick="switchTab('presence')" class="sidebar-item flex items-center space-x-3 w-full p-4 rounded-xl text-blue-400 hover:bg-blue-50 transition-all duration-300" data-tab="presence">
+                <i data-lucide="clipboard-check" class="w-5 h-5"></i>
+                <span class="font-medium">Data Presensi</span>
+            </button>
+            
+            <div class="mt-auto p-4 bg-blue-50 rounded-2xl border border-blue-100">
+                <p class="text-xs text-blue-600 font-bold mb-1 uppercase tracking-wider italic">Tips Kejujuran</p>
+                <p class="text-xs text-blue-800">Isilah alasan dispensasi dengan jujur dan bertanggung jawab.</p>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-4 md:p-10 max-w-5xl mx-auto w-full">
+            
+            <!-- Tab: Home -->
+            <div id="home" class="tab-content active animate-fade-in space-y-8">
+                <div class="relative h-[300px] md:h-[450px] rounded-3xl overflow-hidden shadow-2xl group">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-900/40 to-transparent flex flex-col justify-end p-6 md:p-10 text-white">
+                        <div class="mb-4">
+                            <img src="https://smasa-magetan.sch.id/wp-content/uploads/2023/06/LOGO-SMA-NEGERI-1-MAGETAN-258x300.png" class="w-16 md:w-24 drop-shadow-lg">
+                        </div>
+                        <h1 class="text-2xl md:text-5xl font-bold mb-2 uppercase">Selamat Datang</h1>
+                        <p class="text-lg md:text-2xl opacity-90 font-light text-blue-100">Portal Digital SMAN 1 MAGETAN</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div onclick="switchTab('form')" class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all cursor-pointer group">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                            <i data-lucide="file-text"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2 text-slate-800">Ajukan Izin</h3>
+                        <p class="text-sm text-slate-500 mb-4">Proses pengajuan izin keluar sekolah secara digital.</p>
+                        <div class="flex items-center text-blue-600 text-sm font-semibold">Mulai Sekarang <i data-lucide="chevron-right" class="w-4 h-4 ml-1"></i></div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-4">
+                            <i data-lucide="calendar"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2 text-slate-800">Cek Jadwal</h3>
+                        <p class="text-sm text-slate-500 mb-4">Pastikan Anda tidak melewatkan jam pelajaran penting.</p>
+                        <div class="text-slate-400 text-sm">Terintegrasi otomatis</div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-4">
+                            <i data-lucide="info"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2 text-slate-800">Panduan</h3>
+                        <p class="text-sm text-slate-500 mb-4">Pelajari tata tertib dispensasi di SMAN 1 Magetan.</p>
+                        <div class="text-slate-400 text-sm">Lihat Detail</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Form -->
+            <div id="form" class="tab-content animate-fade-in">
+                <div class="mb-8 flex flex-col md:flex-row md:items-center gap-4">
+                    <img src="https://smasa-magetan.sch.id/wp-content/uploads/2023/06/LOGO-SMA-NEGERI-1-MAGETAN-258x300.png" class="w-12 h-12 object-contain">
+                    <div>
+                        <h2 class="text-3xl font-bold text-slate-800">Formulir Dispensasi</h2>
+                        <p class="text-slate-500">Lengkapi data berikut dengan informasi yang benar.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl shadow-sm border border-slate-100 p-6 md:p-8">
+                    <form id="dispensationForm" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-sm font-semibold text-slate-700 flex items-center gap-2">
+                                    <i data-lucide="calendar" class="w-4 h-4 text-blue-500"></i> Tanggal
+                                </label>
+                                <input type="date" id="tanggal" name="tanggal" class="w-full p-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-400 outline-none transition-all" required>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-sm font-semibold text-slate-700 flex items-center gap-2">
+                                    <i data-lucide="user" class="w-4 h-4 text-blue-500"></i> Nama Lengkap
+                                </label>
+                                <input type="text" id="nama" name="nama" placeholder="Nama sesuai absen" class="w-full p-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-400 outline-none transition-all" required>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-sm font-semibold text-slate-700 flex items-center gap-2">
+                                    <i data-lucide="clock" class="w-4 h-4 text-blue-500"></i> Jam Mulai
+                                </label>
+                                <input type="time" id="mulai" name="mulai" class="w-full p-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-400 outline-none transition-all" required>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-sm font-semibold text-slate-700 flex items-center gap-2">
+                                    <i data-lucide="clock" class="w-4 h-4 text-blue-500"></i> Jam Selesai
+                                </label>
+                                <input type="time" id="selesai" name="selesai" class="w-full p-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-400 outline-none transition-all" required>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-sm font-semibold text-slate-700">Guru Pemberi Izin</label>
+                                <input type="text" id="guruIzin" name="guruIzin" placeholder="Nama guru mapel" class="w-full p-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-400 outline-none transition-all" required>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-sm font-semibold text-slate-700">Guru Piket</label>
+                                <input type="text" id="guruPiket" name="guruPiket" placeholder="Nama guru piket" class="w-full p-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-400 outline-none transition-all" required>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold text-slate-700">Alasan Dispensasi</label>
+                            <textarea id="alasan" name="alasan" rows="3" placeholder="Jelaskan alasan Anda secara detail..." class="w-full p-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-400 outline-none transition-all" required></textarea>
+                        </div>
+
+                        <div id="formStatus" class="hidden p-4 rounded-xl text-sm border"></div>
+
+                        <button type="submit" id="submitBtn" class="w-full py-4 rounded-xl font-bold text-white shadow-lg bg-blue-500 hover:bg-blue-600 active:scale-[0.98] transition-all flex items-center justify-center space-x-2">
+                            <i data-lucide="send" class="w-5 h-5"></i>
+                            <span id="btnText">Kirim Pengajuan</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Tab: Presence -->
+            <div id="presence" class="tab-content animate-fade-in">
+                <div class="mb-8">
+                    <h2 class="text-3xl font-bold text-slate-800">Data Presensi</h2>
+                    <p class="text-slate-500">Riwayat dispensasi hari ini.</p>
+                </div>
+
+                <div class="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 text-slate-600 border-b">
+                                    <th class="p-5 font-semibold text-sm">Tanggal</th>
+                                    <th class="p-5 font-semibold text-sm">Nama</th>
+                                    <th class="p-5 font-semibold text-sm">Alasan</th>
+                                    <th class="p-5 font-semibold text-sm">Waktu</th>
+                                    <th class="p-5 font-semibold text-sm">Piket</th>
+                                </tr>
+                            </thead>
+                            <tbody id="presenceTableBody" class="divide-y divide-slate-50">
+                                <!-- Data will be injected here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Configuration
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyo0yLpMuX5TijD1P-GrDwGaezvbrJm0gp5RMOHK7YIGKjiDLUd0A_ATU9DTCmbduEatQ/exec";
+        let presenceData = [];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            document.getElementById('tanggal').value = new Date().toISOString().split('T')[0];
+            updatePresenceTable();
+        });
+
+        // Tab Navigation Logic
+        function switchTab(tabId) {
+            // Update Active Tab Content
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+
+            // Update Sidebar UI
+            document.querySelectorAll('.sidebar-item').forEach(item => {
+                if (item.getAttribute('data-tab') === tabId) {
+                    item.classList.add('active');
+                    item.classList.remove('text-blue-400', 'hover:bg-blue-50');
+                } else {
+                    item.classList.remove('active');
+                    item.classList.add('text-blue-400', 'hover:bg-blue-50');
+                }
+            });
+
+            // Update Mobile UI
+            document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
+                if (btn.getAttribute('data-tab') === tabId) {
+                    btn.classList.add('bg-blue-100', 'text-blue-600');
+                } else {
+                    btn.classList.remove('bg-blue-100', 'text-blue-600');
+                }
+            });
+        }
+
+        // Form Submission Logic
+        const form = document.getElementById('dispensationForm');
+        const formStatus = document.getElementById('formStatus');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = {
+                tanggal: document.getElementById('tanggal').value,
+                nama: document.getElementById('nama').value,
+                mulai: document.getElementById('mulai').value,
+                selesai: document.getElementById('selesai').value,
+                guruIzin: document.getElementById('guruIzin').value,
+                guruPiket: document.getElementById('guruPiket').value,
+                alasan: document.getElementById('alasan').value
+            };
+
+            // Validation
+            if (formData.alasan.length < 10) {
+                showStatus("Alasan terlalu singkat (minimal 10 karakter).", "error");
+                return;
+            }
+
+            // Loading State
+            submitBtn.disabled = true;
+            btnText.innerText = "Mengirim...";
+            submitBtn.classList.add('opacity-70');
+
+            try {
+                if (SCRIPT_URL) {
+                    await fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formData)
+                    });
+                }
+
+                // Simulate Success
+                setTimeout(() => {
+                    presenceData.unshift(formData);
+                    updatePresenceTable();
+                    showStatus("Pengajuan berhasil dikirim!", "success");
+                    form.reset();
+                    document.getElementById('tanggal').value = new Date().toISOString().split('T')[0];
+                    
+                    submitBtn.disabled = false;
+                    btnText.innerText = "Kirim Pengajuan";
+                    submitBtn.classList.remove('opacity-70');
+                }, 1000);
+
+            } catch (err) {
+                showStatus("Gagal mengirim data. Coba lagi.", "error");
+                submitBtn.disabled = false;
+                btnText.innerText = "Kirim Pengajuan";
+                submitBtn.classList.remove('opacity-70');
+            }
+        });
+
+        function showStatus(msg, type) {
+            formStatus.innerText = msg;
+            formStatus.classList.remove('hidden', 'bg-red-50', 'text-red-600', 'border-red-100', 'bg-green-50', 'text-green-600', 'border-green-100');
+            
+            if (type === 'error') {
+                formStatus.classList.add('bg-red-50', 'text-red-600', 'border-red-100');
+            } else {
+                formStatus.classList.add('bg-green-50', 'text-green-600', 'border-green-100');
+            }
+        }
+
+        function updatePresenceTable() {
+            const tbody = document.getElementById('presenceTableBody');
+            if (presenceData.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="p-20 text-center text-slate-400">
+                            <div class="flex flex-col items-center opacity-60">
+                                <i data-lucide="inbox" class="w-12 h-12 mb-3"></i>
+                                <p>Belum ada data hari ini.</p>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                lucide.createIcons();
+                return;
+            }
+
+            tbody.innerHTML = presenceData.map(data => `
+                <tr class="hover:bg-blue-50/30 transition-colors">
+                    <td class="p-5 text-sm text-slate-600">${data.tanggal}</td>
+                    <td class="p-5 text-sm font-semibold text-slate-800">${data.nama}</td>
+                    <td class="p-5 text-sm text-slate-600 italic">"${data.alasan}"</td>
+                    <td class="p-5 text-sm text-slate-600">${data.mulai} - ${data.selesai}</td>
+                    <td class="p-5 text-sm text-slate-600 font-medium">${data.guruPiket}</td>
+                </tr>
+            `).join('');
+        }
+    </script>
+</body>
+</html>
